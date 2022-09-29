@@ -4,7 +4,7 @@ import baseball.model.Director;
 import baseball.model.RandomNumber;
 import baseball.model.UserInputNumber;
 import baseball.model.dto.DirectorResult;
-import baseball.view.PrintMessage;
+import baseball.view.InputMessage;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class BaseBallGame {
 
     private void playTheGame(RandomNumber randomNumber) {
         while (PLAY_THE_GAME) {
-            String inputNumber = PrintMessage.inputNumber();
+            String inputNumber = InputMessage.printNumber();
             List<Integer> userNumber = new UserInputNumber(inputNumber).getNumber();
 
             DirectorResult result = new Director().judge(userNumber, randomNumber.getAnswer());
@@ -30,7 +30,7 @@ public class BaseBallGame {
 
     private void checkGameOver(DirectorResult result) {
         if (result.isGameOver()) {
-            String selectType = PrintMessage.inputContinueGame();
+            String selectType = InputMessage.printContinueGame();
             continueGame(selectType);
         }
     }

@@ -9,7 +9,7 @@ public class Judgement {
     private int judgementCount = 0;
 
     public int getStrikeCount(List<Integer> userNumber, List<Integer> randomNumber) {
-        for (int i = 0; i < RANDOM_BASE_BALL_MAX_SIZE; i++) {
+        for (int i = 0; i < BASE_BALL_MAX_SIZE; i++) {
             judgementCount += getCountIfStrike(userNumber.get(i), randomNumber.get(i));
         }
 
@@ -17,7 +17,7 @@ public class Judgement {
     }
 
     public int getBallCount(List<Integer> userNumber, List<Integer> randomNumber) {
-        for (int i = 0; i < RANDOM_BASE_BALL_MAX_SIZE; i++) {
+        for (int i = 0; i < BASE_BALL_MAX_SIZE; i++) {
             judgementCount += getCountIfBall(userNumber.get(i), randomNumber.get(i), randomNumber);
         }
 

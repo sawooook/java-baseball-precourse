@@ -13,7 +13,7 @@ import java.util.List;
 
 public class BaseBallGame {
 
-    public static boolean PLAY_THE_GAME = true;
+    public boolean PLAY_THE_GAME = true;
 
     public void start() {
         playTheGame(getRandomNumber());

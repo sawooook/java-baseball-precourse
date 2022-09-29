@@ -4,7 +4,7 @@ import java.util.List;
 
 import static baseball.utils.Constants.*;
 
-public class JudgeGame {
+public class Judgement {
 
     private int judgementCount = 0;
 

@@ -11,14 +11,14 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class JudgeGameTest {
+class JudgementTest {
 
     @ParameterizedTest
     @MethodSource("makeNumberForStrikeTest")
     @DisplayName("유저가 입력한 숫자와 랜덤숫자의 위치와 값이 일치할 경우 strike 숫자가 올라간다.")
     void strike(List<Integer> userNumber, List<Integer> randomNumber, int result) {
         System.out.println(userNumber);
-        int strikeCount = new JudgeGame().getStrikeCount(userNumber, randomNumber);
+        int strikeCount = new Judgement().getStrikeCount(userNumber, randomNumber);
 
         assertEquals(strikeCount, result);
     }
@@ -37,7 +37,7 @@ class JudgeGameTest {
     @DisplayName("유저가 입력한 숫자와 랜덤숫자의 값이 자리만 다를 경우 ball 숫자가 올라간다.")
     void ball(List<Integer> userNumber, List<Integer> randomNumber, int result) {
         System.out.println(userNumber);
-        int ballCount = new JudgeGame().getBallCount(userNumber, randomNumber);
+        int ballCount = new Judgement().getBallCount(userNumber, randomNumber);
 
         assertEquals(ballCount, result);
     }

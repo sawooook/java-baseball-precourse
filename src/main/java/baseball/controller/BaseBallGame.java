@@ -16,7 +16,7 @@ public class BaseBallGame {
     public boolean PLAY_THE_GAME = true;
 
     public void start() {
-        playTheGame(getRandomNumber());
+        playTheGame(makeRandomNumber());
     }
 
     private void playTheGame(RandomNumber randomNumber) {
@@ -54,7 +54,7 @@ public class BaseBallGame {
         }
     }
 
-    private RandomNumber getRandomNumber() {
+    private RandomNumber makeRandomNumber() {
         return new RandomNumber();
     }
 
@@ -64,6 +64,6 @@ public class BaseBallGame {
             return;
         }
 
-        playTheGame(getRandomNumber());
+        playTheGame(makeRandomNumber());
     }
 }

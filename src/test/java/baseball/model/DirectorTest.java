@@ -24,4 +24,18 @@ class DirectorTest {
         assertEquals(judge.getBallCount(), 0);
         assertEquals(judge.getStrikeCount(), 0);
     }
+
+    @Test
+    @DisplayName("3스트라이크일 경우 게임이 종료되었다고 판단한다.")
+    void gameOver() {
+        List<Integer> userNumber = Arrays.asList(1, 2, 3);
+        List<Integer> randomNumber = Arrays.asList(1, 2, 3);
+
+        DirectorResult judge = new Director().judge(userNumber, randomNumber);
+
+        assertTrue(judge.isGameOver());
+        assertFalse(judge.isNothing());
+        assertEquals(judge.getBallCount(), 0);
+        assertEquals(judge.getStrikeCount(), 0);
+    }
 }

@@ -60,7 +60,6 @@ public class UserInputNumber {
     }
 
     private void checkBlank(String value) {
-        System.out.println(value);
         if (value.equals(BLANK)) {
             throw new IllegalArgumentException(INVALID_BLANK_NUMBER.getMessage());
         }

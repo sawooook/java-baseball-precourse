@@ -3,9 +3,13 @@ package baseball.model;
 import baseball.model.dto.DirectorResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,5 +41,26 @@ class DirectorTest {
         assertFalse(judge.isNothing());
         assertEquals(judge.getBallCount(), 0);
         assertEquals(judge.getStrikeCount(), 0);
+    }
+
+    @ParameterizedTest
+    @MethodSource("makeNumber")
+    @DisplayName("낫씽도 스트라이크도 아닐 경우 감독이 햔재 스코어를 알려준다.")
+    void getScore(List<Integer> userNumber, List<Integer> randomNumber, int strikeCount, int ballCount) {
+        DirectorResult judge = new Director().judge(userNumber, randomNumber);
+
+        assertFalse(judge.isGameOver());
+        assertFalse(judge.isNothing());
+        assertEquals(judge.getBallCount(), ballCount);
+        assertEquals(judge.getStrikeCount(), strikeCount);
+    }
+
+    public static Stream<Arguments> makeNumber() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(3, 4, 5), Arrays.asList(3, 8, 7), 1, 0),
+                Arguments.of(Arrays.asList(3, 4, 9), Arrays.asList(3, 4, 7), 2, 0),
+                Arguments.of(Arrays.asList(3, 4, 5), Arrays.asList(4, 3, 1), 0, 2),
+                Arguments.of(Arrays.asList(3, 4, 5), Arrays.asList(3, 5, 4), 1, 2)
+        );
     }
 }

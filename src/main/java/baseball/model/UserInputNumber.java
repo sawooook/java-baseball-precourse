@@ -10,7 +10,7 @@ import static baseball.utils.Constants.*;
 
 public class UserInputNumber {
 
-    private List<Integer> number;
+    private final List<Integer> number;
 
     public UserInputNumber(String value) {
         number = new ArrayList<>();

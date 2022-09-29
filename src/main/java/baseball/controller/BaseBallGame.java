@@ -22,20 +22,29 @@ public class BaseBallGame {
     private void playTheGame(RandomNumber randomNumber) {
         while (PLAY_THE_GAME) {
             String inputNumber = InputMessage.printNumber();
+
             List<Integer> userNumber = new UserInputNumber(inputNumber).getNumber();
 
             // 판단 결과
             DirectorResult result = new Director().judge(userNumber, randomNumber.getAnswer());
 
             // 스코어 메세지 생성
-            StringBuilder scoreMessage = MakeScoreUtil.makeName(result.getStrikeCount(), result.getBallCount());
+            StringBuilder scoreMessage = makeScoreMessage(result);
 
             OutputMessage.printScore(scoreMessage);
 
             checkGameOver(result);
         }
     }
-    
+
+    private StringBuilder makeScoreMessage(DirectorResult result) {
+        if (result.isNothing()) {
+            return MakeScoreUtil.makeNothing();
+        }
+
+        return MakeScoreUtil.makeName(result.getStrikeCount(), result.getBallCount());
+    }
+
     private void checkGameOver(DirectorResult result) {
         if (result.isGameOver()) {
             OutputMessage.printGameOver();

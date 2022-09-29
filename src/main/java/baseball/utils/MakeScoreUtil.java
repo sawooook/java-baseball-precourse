@@ -15,4 +15,8 @@ public class MakeScoreUtil {
 
         return builder;
     }
+
+    public static StringBuilder makeNothing() {
+        return new StringBuilder().append("낫싱");
+    }
 }

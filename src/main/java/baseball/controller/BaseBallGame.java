@@ -4,7 +4,9 @@ import baseball.model.Director;
 import baseball.model.RandomNumber;
 import baseball.model.UserInputNumber;
 import baseball.model.dto.DirectorResult;
+import baseball.utils.MakeScoreUtil;
 import baseball.view.InputMessage;
+import baseball.view.OutputMessage;
 
 import java.util.List;
 
@@ -22,14 +24,22 @@ public class BaseBallGame {
             String inputNumber = InputMessage.printNumber();
             List<Integer> userNumber = new UserInputNumber(inputNumber).getNumber();
 
+            // 판단 결과
             DirectorResult result = new Director().judge(userNumber, randomNumber.getAnswer());
+
+            // 스코어 메세지 생성
+            StringBuilder scoreMessage = MakeScoreUtil.makeName(result.getStrikeCount(), result.getBallCount());
+
+            OutputMessage.printScore(scoreMessage);
 
             checkGameOver(result);
         }
     }
-
+    
     private void checkGameOver(DirectorResult result) {
         if (result.isGameOver()) {
+            OutputMessage.printGameOver();
+
             String selectType = InputMessage.printContinueGame();
             continueGame(selectType);
         }

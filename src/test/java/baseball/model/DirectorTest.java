@@ -40,7 +40,7 @@ class DirectorTest {
         assertTrue(judge.isGameOver());
         assertFalse(judge.isNothing());
         assertEquals(judge.getBallCount(), 0);
-        assertEquals(judge.getStrikeCount(), 0);
+        assertEquals(judge.getStrikeCount(), 3);
     }
 
     @ParameterizedTest

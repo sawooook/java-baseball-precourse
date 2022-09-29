@@ -1,5 +1,6 @@
 package baseball.model.dto;
 
+import static baseball.utils.Constants.GAME_OVER_COUNT;
 import static baseball.utils.Constants.NOT_COUNT;
 
 public class DirectorResult {
@@ -25,7 +26,7 @@ public class DirectorResult {
     }
 
     public static DirectorResult gameOver() {
-        return new DirectorResult(true, false, NOT_COUNT, NOT_COUNT);
+        return new DirectorResult(true, false, GAME_OVER_COUNT, NOT_COUNT);
     }
 
     public boolean isNothing() {

@@ -2,6 +2,8 @@ package baseball.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
@@ -64,5 +66,17 @@ class UserInputNumberTest {
                 .isThrownBy(() -> {
                     new UserInputNumber(inputNumber);
                 }).withMessageMatching(ExceptionType.INVALID_DUPLICATED_NUMBER.getMessage());
+    }
+
+
+    @DisplayName("네자리 이상 숫자가 입력 될 경우 오류가 발생한다")
+    @ParameterizedTest
+    @ValueSource(strings = {"1234", "12345", "123456"})
+    void numberSizeFail(String inputNumber) {
+        
+        assertThatExceptionOfType(IllegalArgumentException.class)
+                .isThrownBy(() -> {
+                    new UserInputNumber(inputNumber);
+                }).withMessageMatching(ExceptionType.INVALID_INPUT_NUMBER_SIZE.getMessage());
     }
 }

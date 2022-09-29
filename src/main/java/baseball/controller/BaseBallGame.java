@@ -30,11 +30,21 @@ public class BaseBallGame {
 
     private void checkGameOver(DirectorResult result) {
         if (result.isGameOver()) {
-            PrintMessage.inputContinueGame();
+            String selectType = PrintMessage.inputContinueGame();
+            continueGame(selectType);
         }
     }
 
     private RandomNumber getRandomNumber() {
         return new RandomNumber();
+    }
+
+    private void continueGame(String selectType) {
+        if (selectType.equals("2")) {
+            PLAY_THE_GAME = false;
+            return;
+        }
+
+        playTheGame(getRandomNumber());
     }
 }

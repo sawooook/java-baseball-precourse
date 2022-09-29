@@ -19,10 +19,19 @@ public class UserInputNumber {
     }
 
     private void addNumberIfValid(String[] splitNumber) {
+        checkValidInputNumberSize(splitNumber);
+
         for (String value : splitNumber) {
             validCheckInputNumber(value);
             checkDuplicatedNumber(value);
+
             number.add(Integer.parseInt(value));
+        }
+    }
+
+    private void checkValidInputNumberSize(String[] splitNumber) {
+        if (splitNumber.length >= 4) {
+            throw new  IllegalArgumentException(INVALID_INPUT_NUMBER_SIZE.getMessage());
         }
     }
 

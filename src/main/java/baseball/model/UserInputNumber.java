@@ -19,23 +19,23 @@ public class UserInputNumber {
     }
 
     private void addNumberIfValid(String[] splitNumber) {
-        checkValidInputNumberSize(splitNumber);
+        validCheckInputNumberSize(splitNumber);
 
         for (String value : splitNumber) {
             validCheckInputNumber(value);
-            checkDuplicatedNumber(value);
+            validCheckDuplicatedNumber(value);
 
             number.add(Integer.parseInt(value));
         }
     }
 
-    private void checkValidInputNumberSize(String[] splitNumber) {
-        if (splitNumber.length >= 4) {
+    private void validCheckInputNumberSize(String[] splitNumber) {
+        if (splitNumber.length >= MAX_INPUT_NUMBER_SIZE) {
             throw new  IllegalArgumentException(INVALID_INPUT_NUMBER_SIZE.getMessage());
         }
     }
 
-    private void checkDuplicatedNumber(String value) {
+    private void validCheckDuplicatedNumber(String value) {
         if (number.contains(Integer.parseInt(value))) {
             throw new IllegalArgumentException(INVALID_DUPLICATED_NUMBER.getMessage());
         }
@@ -46,12 +46,12 @@ public class UserInputNumber {
     }
 
     private void validCheckInputNumber(String value) {
-        checkBlank(value);
-        checkNumberFormat(value);
-        checkZeroNumber(value);
+        validCheckBlank(value);
+        validCheckNumberFormat(value);
+        validCheckExceptionNumber(value);
     }
 
-    private void checkNumberFormat(String value) {
+    private void validCheckNumberFormat(String value) {
         try {
             Integer.parseInt(value);
         } catch (NumberFormatException e) {
@@ -59,15 +59,15 @@ public class UserInputNumber {
         }
     }
 
-    private void checkBlank(String value) {
+    private void validCheckBlank(String value) {
         if (value.equals(BLANK)) {
             throw new IllegalArgumentException(INVALID_BLANK_NUMBER.getMessage());
         }
     }
 
-    private void checkZeroNumber(String value) {
+    private void validCheckExceptionNumber(String value) {
         int number = Integer.parseInt(value);
-        if (number == 0) {
+        if (number == EXCEPTION_NUMBER) {
             throw new IllegalArgumentException(INVALID_ZERO_NUMBER.getMessage());
         }
     }

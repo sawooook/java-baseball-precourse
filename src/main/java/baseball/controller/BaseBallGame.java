@@ -10,6 +10,8 @@ import baseball.view.OutputMessage;
 
 import java.util.List;
 
+import static baseball.utils.Constants.GAME_OVER_TYPE;
+
 
 public class BaseBallGame {
 
@@ -22,7 +24,6 @@ public class BaseBallGame {
     private void playTheGame(RandomNumber randomNumber) {
         while (PLAY_THE_GAME) {
             String inputNumber = InputMessage.printNumber();
-
             List<Integer> userNumber = new UserInputNumber(inputNumber).getNumber();
 
             // 판단 결과
@@ -59,7 +60,7 @@ public class BaseBallGame {
     }
 
     private void continueGame(String selectType) {
-        if (selectType.equals("2")) {
+        if (selectType.equals(GAME_OVER_TYPE)) {
             PLAY_THE_GAME = false;
             return;
         }

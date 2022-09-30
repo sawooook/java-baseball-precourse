@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.enums;
 
 public enum ExceptionType {
     INVALID_INPUT_NUMBER_SIZE("3자리 이상의 숫자를 입력 하셨습니다"),

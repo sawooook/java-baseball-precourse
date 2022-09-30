@@ -1,11 +1,9 @@
 package baseball.model;
 
-import baseball.utils.Constants;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static baseball.model.ExceptionType.*;
+import static baseball.model.enums.ExceptionType.*;
 import static baseball.utils.Constants.*;
 
 public class UserInputNumber {

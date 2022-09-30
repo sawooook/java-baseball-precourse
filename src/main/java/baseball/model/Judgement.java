@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.model.enums.JudgementType;
+
 import java.util.List;
 
 import static baseball.utils.Constants.*;

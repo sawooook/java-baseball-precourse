@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.enums;
 
 public enum JudgementType {
     SUCCESS(1), FAIL(0);

@@ -13,6 +13,10 @@ public class Referee {
         int strikeCount = new Judgement().getStrikeCount(userNumber, randomNumber);
         int ballCount = new Judgement().getBallCount(userNumber, randomNumber);
 
+        return getScoreResult(strikeCount, ballCount);
+    }
+
+    private JudgeResult getScoreResult(int strikeCount, int ballCount) {
         if (isNothing(ballCount, strikeCount)) {
             return JudgeResult.nothing();
         }

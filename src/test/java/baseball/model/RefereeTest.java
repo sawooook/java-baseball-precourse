@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class DirectorTest {
+class RefereeTest {
 
     @Test
     @DisplayName("스트라이크와 볼 둘다 존재하지 않으면 낫씽으로 판단한다.")

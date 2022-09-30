@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.model.dto.DirectorResult;
+import baseball.model.dto.JudgeResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,7 +22,7 @@ class DirectorTest {
         List<Integer> userNumber = Arrays.asList(1, 2, 3);
         List<Integer> randomNumber = Arrays.asList(4, 5, 6);
 
-        DirectorResult judge = new Director().judge(userNumber, randomNumber);
+        JudgeResult judge = new Referee().judge(userNumber, randomNumber);
 
         assertTrue(judge.isNothing());
         assertEquals(judge.getBallCount(), 0);
@@ -35,7 +35,7 @@ class DirectorTest {
         List<Integer> userNumber = Arrays.asList(1, 2, 3);
         List<Integer> randomNumber = Arrays.asList(1, 2, 3);
 
-        DirectorResult judge = new Director().judge(userNumber, randomNumber);
+        JudgeResult judge = new Referee().judge(userNumber, randomNumber);
 
         assertTrue(judge.isGameOver());
         assertFalse(judge.isNothing());
@@ -47,7 +47,7 @@ class DirectorTest {
     @MethodSource("makeNumber")
     @DisplayName("낫씽도 스트라이크도 아닐 경우 감독이 햔재 스코어를 알려준다.")
     void getScore(List<Integer> userNumber, List<Integer> randomNumber, int strikeCount, int ballCount) {
-        DirectorResult judge = new Director().judge(userNumber, randomNumber);
+        JudgeResult judge = new Referee().judge(userNumber, randomNumber);
 
         assertFalse(judge.isGameOver());
         assertFalse(judge.isNothing());

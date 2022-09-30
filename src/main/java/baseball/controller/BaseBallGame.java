@@ -1,9 +1,9 @@
 package baseball.controller;
 
-import baseball.model.Director;
 import baseball.model.RandomNumber;
+import baseball.model.Referee;
 import baseball.model.UserInputNumber;
-import baseball.model.dto.DirectorResult;
+import baseball.model.dto.JudgeResult;
 import baseball.utils.MakeScoreUtil;
 import baseball.view.InputMessage;
 import baseball.view.OutputMessage;
@@ -26,7 +26,7 @@ public class BaseBallGame {
             List<Integer> userNumber = new UserInputNumber(inputNumber).getNumber();
 
             // 판단 결과
-            DirectorResult result = new Director().judge(userNumber, randomNumber.getAnswer());
+            JudgeResult result = new Referee().judge(userNumber, randomNumber.getAnswer());
 
             // 스코어 메세지 생성
             StringBuilder scoreMessage = makeScoreMessage(result);
@@ -37,7 +37,7 @@ public class BaseBallGame {
         }
     }
 
-    private StringBuilder makeScoreMessage(DirectorResult result) {
+    private StringBuilder makeScoreMessage(JudgeResult result) {
         if (result.isNothing()) {
             return MakeScoreUtil.makeNothing();
         }
@@ -45,7 +45,7 @@ public class BaseBallGame {
         return MakeScoreUtil.makeName(result.getStrikeCount(), result.getBallCount());
     }
 
-    private void checkGameOver(DirectorResult result) {
+    private void checkGameOver(JudgeResult result) {
         if (result.isGameOver()) {
             OutputMessage.printGameOver();
 

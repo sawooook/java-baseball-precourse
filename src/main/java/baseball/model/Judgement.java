@@ -9,44 +9,43 @@ public class Judgement {
     private int judgementCount = 0;
 
     public int getStrikeCount(List<Integer> userNumber, List<Integer> randomNumber) {
-        for (int i = 0; i < BASE_BALL_MAX_SIZE; i++) {
-            judgementCount += getCountIfStrike(userNumber.get(i), randomNumber.get(i));
+        for (int i = INIT_NUMBER; i < BASE_BALL_MAX_SIZE; i++) {
+            judgementCount += getCountIfStrike(userNumber.get(i), randomNumber.get(i)).getCount();
         }
 
         return judgementCount;
     }
 
     public int getBallCount(List<Integer> userNumber, List<Integer> randomNumber) {
-        for (int i = 0; i < BASE_BALL_MAX_SIZE; i++) {
-            judgementCount += getCountIfBall(userNumber.get(i), randomNumber.get(i), randomNumber);
+        for (int i = INIT_NUMBER; i < BASE_BALL_MAX_SIZE; i++) {
+            judgementCount += getCountIfBall(userNumber.get(i), randomNumber.get(i), randomNumber).getCount();
         }
 
         return judgementCount;
     }
 
-    private int getCountIfStrike(Integer userNumber, Integer randomNumber) {
+    private JudgementType getCountIfStrike(Integer userNumber, Integer randomNumber) {
         if (isStrike(userNumber, randomNumber)) {
-            return 1;
+            return JudgementType.SUCCESS;
         }
 
-        return 0;
+        return JudgementType.FAIL;
     }
 
     private Boolean isStrike(Integer userNumber, Integer randomNumber) {
         return userNumber.equals(randomNumber);
     }
 
-    private int getCountIfBall(Integer userNumber, Integer randomNumber, List<Integer> randomNumberList) {
+    private JudgementType getCountIfBall(Integer userNumber, Integer randomNumber, List<Integer> randomNumberList) {
         if (isStrike(userNumber, randomNumber)) {
-            return 0;
+            return JudgementType.FAIL;
         }
 
         if (isBall(userNumber, randomNumberList)) {
-            return 1;
+            return JudgementType.SUCCESS;
         }
 
-
-        return 0;
+        return JudgementType.FAIL;
     }
 
     private boolean isBall(Integer userNumber, List<Integer> randomNumberList) {

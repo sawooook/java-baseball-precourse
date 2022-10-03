@@ -4,7 +4,6 @@ public class MakeScoreUtil {
 
     public static StringBuilder makeName(int strikeCount, int ballCount) {
         StringBuilder builder = new StringBuilder();
-
         if (ballCount != 0) {
             builder.append(ballCount).append("볼").append(" ");
         }

@@ -24,16 +24,12 @@ public class BaseBallGame {
     private void playTheGame(RandomNumber randomNumber) {
         while (PLAY_THE_GAME) {
             String inputNumber = InputMessage.printNumber();
+
             List<Integer> userNumber = new UserInputNumber(inputNumber).getNumber();
 
-            // 판단 결과
             JudgeResult result = new Referee().judge(userNumber, randomNumber.getAnswer());
 
-            // 스코어 메세지 생성
-            StringBuilder scoreMessage = makeScoreMessage(result);
-
-            OutputMessage.printScore(scoreMessage);
-
+            OutputMessage.printScore(makeScoreMessage(result));
             checkGameOver(result);
         }
     }
